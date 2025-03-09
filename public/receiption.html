@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors & Menu</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(135deg, #f9f9f9, #c7e6f5);
+            color: #333;
+        }
+
+        /* Left-Side Menu */
+        .sidebar {
+            width: 250px;
+            background: #30373f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .menu li:hover {
+            background: #224671;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        /* Doctor Section */
+        .doctor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .doctor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid #224671;
+        }
+
+        .doctor-card h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .doctor-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Sidebar Menu -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul class="menu">
+            <li onclick="location.href='appointment.html'">Appointment</li>
+            <li onclick="location.href='room.html'">Room</li>
+            <li onclick="location.href='prescription.html'">Prescription</li>
+            <li onclick="location.href='admission.html'">Admission</li>
+            <li onclick="location.href='lab_tests.html'">New Lab Test</li>
+            <li onclick="location.href='show_tests.html'">Observe Lab Tests</li>
+        </ul>
+        <div style="text-align: center; margin-top: 100px;">
+            <button class="sidebar-button" 
+                    onclick="location.href='index.html'" 
+                    style="padding: 10px 20px; 
+                           background-color: #c0151563; 
+                           color: white; 
+                           border: none; 
+                           border-radius: 5px; 
+                           font-size: 16px; 
+                           cursor: pointer; 
+                           box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                           transition: all 0.3s ease;"
+                    onmouseover="this.style.backgroundColor='#c55f40'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 8px rgba(0,0,100,0.3)';" 
+                    onmouseout="this.style.backgroundColor='#c55f40'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.2)';">
+               Go back
+            </button>
+        </div>
+    </div>
+    
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Meet Our Doctors</h1>
+        <div class="doctor-list">
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <img src="../uploads/doctor4.jpg" alt="Dr. John Doe">
+                <h3>Dr. John Doe</h3>
+                <p>Cardiologist | 10+ Years</p>
+            </div>
+
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <img src="../uploads/doctor4.jpg" alt="Dr. Sarah Smith">
+                <h3>Dr. Sarah Smith</h3>
+                <p>Neurologist | 8+ Years</p>
+            </div>
+
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <img src="../uploads/doctor4.jpg" alt="Dr. Emily Brown">
+                <h3>Dr. Emily Brown</h3>
+                <p>Orthopedic | 12+ Years</p>
+            </div>
+
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <img src="../uploads/doctor4.jpg" alt="Dr. Michael Johnson">
+                <h3>Dr. Michael Johnson</h3>
+                <p>Dermatologist | 15+ Years</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+
+#roomsList table th,
+#roomsList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+
+#roomsList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#roomsList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#roomsList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.room .update100-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.room .delete100-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.room .update100-btn:hover {
+    background-color: #27ae60;
+}
+
+.room .delete100-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+#appointmentsList table th,
+#appointmentsList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+
+#appointmentsList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#appointmentsList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#appointmentsList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.appointment .update4-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment .delete4-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment.update4-btn:hover {
+    background-color: #27ae60;
+}
+
+.appointment .delete4-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+
+#doctorsList table th,
+#doctorsList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+
+#doctorsList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#doctorsList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#doctorsList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.doctor .upde20-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.doctor .delete20-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.doctor .upde20-btn:hover {
+    background-color: #27ae60;
+}
+
+.doctor .delete20-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+#treatmentsList table th,
+#treatmentsList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+
+#treatmentsList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#treatmentsList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#treatmentsList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.treatment .update10-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.treatment .delete10-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.treatment .update10-btn:hover {
+    background-color: #27ae60;
+}
+
+.treatment .delete10-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+#admissionsList table th,
+#admissionsList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+
+#admissionsList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#admissionsList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#admissionsList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.admission .update3-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admission .delete3-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admission .update3-btn:hover {
+    background-color: #27ae60;
+}
+
+.admission .delete3-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+#linkedDataList table th,
+#linkedDataList table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+#linkedDataList table th {
+    background-color: #56a8d8; /* Matching table header with tabs */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#linkedDataList table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#linkedDataList table tr:hover {
+    background-color: #f2f2f2;
+}
+
+
+
+.pt .delete6-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.pt .delete6-btn:hover {
+    background-color: #c0392b;
+}

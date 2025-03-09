@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="styles4.css">
+    
+</head>
+<body>
+    <div class="header">
+        <h1>Hospital Management System</h1>
+    </div>
+    
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('patients')">Patients</button>
+            <button class="nav-tab " onclick="showSection('doctors')">Doctors</button>
+            <button class="nav-tab" onclick="showSection('appointments')">Appointments</button>
+            <button class="nav-tab" onclick="showSection('rooms')">Rooms</button>
+            <button class="nav-tab" onclick="showSection('prescriptions')">Prescriptions</button>
+            <button class="nav-tab" onclick="showSection('treatments')">Treatment</button>
+            <button class="nav-tab" onclick="showSection('admission')">Admissions</button>
+            <!-- <button class="nav-tab" onclick="showSection('prescription_treatment')">Treatment prescribed</button> -->
+              <!-- <button class="nav-tab" onclick="showSection('tests')">Test</button> -->
+            
+        </div>
+
+    
+
+        <!-- Patients Section -->
+<div id="patients-section" class="content-section active">
+    
+    <div class="data-display">
+        <h3>Patients List</h3>
+        <div class="search-controls">
+            <select id="searchType">
+                <option value="all">All Fields</option>
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+            </select>
+            <input type="text" id="patientSearch" placeholder="Search patients..." onkeyup="searchPatients()">
+        </div>
+        <div id="patientsList"></div>
+    </div>
+</div>
+
+
+<!-- test section -->
+<!-- <div id="tests-section" class="content-section active">
+    <div class="container">
+        <div class="header">
+            <h1>Lab Tests Management</h1>
+            <a href="lab-tests-form.html" class="btn btn-primary">Add New Lab Test</a>
+        </div>
+        
+        <div class="table-container">
+            <h3>All Lab Tests</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Test Name</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Result</th>
+                            <th>Prescription ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="labTestsTableBody">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+        <div id="statusMessage" class="status"></div>
+    </div>
+</div> -->
+
+
+
+        <div id="doctors-section" class="content-section">
+        
+            <div class="data-display">
+                <h3>Doctors List</h3>
+                <div class="search-controls">
+                    <label for="searchType">Search By:</label>
+                    <select id="searchType">
+                        <option value="id">ID</option>
+                        <option value="name">Name</option>
+                        <option value="specialization">Specialization</option>
+                    </select>
+                    <input type="text" id="doctorSearch" placeholder="Enter search term..." oninput="searchDoctors()">
+                </div>
+                <div id="doctorsList"></div>
+            </div>
+        </div>
+        
+
+    <!-- Rooms Section -->
+<!-- Room Form -->
+    <div id="rooms-section" class="content-section">
+     
+
+<div class="data-display">
+    <h3>Room List</h3>
+    <div class="search-controls">
+    
+        <select id="roomSearchType">
+            <option value="all">All Fields</option>
+            <option value="number">Room Number</option>
+            <option value="type">Room Type</option>
+        </select>
+        <input type="text" id="roomSearch" placeholder="Search rooms...">
+    </div>
+    
+    <!-- Rooms List -->
+    <div id="roomsList"></div>
+    </div>
+</div>
+  
+
+
+
+
+
+
+
+      <!-- Prescriptions Section -->
+      <div id="prescriptions-section" class="content-section">
+        <!-- Form to Add New Prescription -->
+     
+    
+        <!-- Section to Display Prescriptions -->
+        <div class="data-display">
+            <h3>Prescription List</h3>
+            <div class="search-controls">
+                <select id="prescriptionSearchType">
+                    <option value="all">All Fields</option>
+                    <option value="id">Prescription ID</option>
+                </select>
+                <input type="text" id="prescriptionSearch" placeholder="Search prescriptions...">
+            </div>
+    
+            <!-- Prescriptions List -->
+            <div id="prescriptionsList"></div>
+        </div>
+    </div>
+    
+
+    <!-- treatment section -->
+
+    <div id="treatments-section" class="content-section">
+       
+    
+        <div class="data-display">
+            <h3>Treatment List</h3>
+            <div class="search-controls">
+                <select id="treatmentSearchType">
+                    <option value="all">All Fields</option>
+                    <option value="id">Treatment ID</option>
+                    <option value="name">Treatment Name</option>
+                </select>
+                <input type="text" id="treatmentSearch" placeholder="Search treatments...">
+            </div>
+    
+            <!-- Treatments List -->
+            <div id="treatmentsList"></div>
+        </div>
+    </div>
+    
+
+<!-- admission section -->
+<div id="admission-section" class="content-section">
+    
+
+    <div class="data-display">
+        <h3>Admission List</h3>
+        <div class="search-controls">
+            <select id="admissionSearchType">
+                <option value="all">All Fields</option>
+                <option value="id">Admission ID</option>
+                <option value="patient">Patient ID</option>
+                <option value="room">Room Number</option>
+            </select>
+            <input type="text" id="admissionSearch" placeholder="Search admissions...">
+        </div>
+
+        <!-- Admissions List -->
+        <div id="admissionsList"></div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div id="prescription_treatment-section" class="content-section">
+   
+
+    <div class="data-display">
+        <h3>Linked Prescriptions and Treatments</h3>
+        
+        <div class="search-container">
+            
+            <select id="searchType">
+                <option value="all">All Fields</option>
+                <option value="prescriptionID">Prescription ID</option>
+                <option value="treatmentID">Treatment ID</option>
+            </select>
+            <input type="text" id="linkedDataSearch" placeholder="Search by Prescription or Treatment ID">
+        </div>
+
+        <div id="linkedDataList">
+            <table id="linkTable">
+                <thead>
+                    <tr>
+                        <th>Prescription ID</th>
+                        <th>Treatment ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+               
+            </table>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+     <!-- Appointments Section -->
+     <div id="appointments-section" class="content-section">
+     
+        <div class="data-display">
+            <h3>Appointments List</h3>
+            <div class="search-bar">
+                <div>
+                    <select id="appointmentSearchType">
+                        <option value="all">All</option>
+                        <option value="id">ID</option>
+                        <option value="prescriptionID">Prescription ID</option>
+                        <option value="patientID">Patient ID</option>
+                        <option value="doctorID">Doctor ID</option>
+                    </select>
+                    <input type="text" id="appointmentSearch" placeholder="Search appointments">
+                    <div id="appointmentsList"></div>
+                </div>
+    
+
+
+
+
+
+   
+
+    <script>
+        // Show/Hide Sections
+        function showSection(sectionName) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(`${sectionName}-section`).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+    </script>
+
+        <script src="patient.js"></script>
+    <script src="doctor.js"></script>
+    <script src="room.js"></script> 
+    <script src="prescription.js"></script> 
+    <script src="treatment.js"></script> 
+    <script src="admission.js"></script> 
+    <script src="prescription_treatment.js"></script> 
+    <script src="appointment.js"></script> 
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="lab-tests.js"></script>
+    
+
+<!-- 
+<script>
+    // Show/Hide Sections
+    function showSection(sectionName) {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(`${sectionName}-section`).classList.add('active');
+      event.target.classList.add('active');
+  
+      // Load the corresponding JavaScript file
+      loadScript(sectionName);
+    }
+  
+    function loadScript(sectionName) {
+      const scripts = {
+        patients: 'patient.js',
+        doctors: 'doctor.js',
+        //appointments: 'appointment.js',
+        rooms: 'room.js',
+        //prescriptions: 'prescription.js'
+      };
+  
+      const scriptFile = scripts[sectionName];
+      if (scriptFile) {
+        const script = document.createElement('script');
+        script.src = scriptFile;
+        document.body.appendChild(script);
+      }
+    }
+  </script>  -->
+
+
+
+   
+</body>
+</html>

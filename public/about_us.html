@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Display</title>
+    <style>
+        /* Overall Layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #1e2025, #689fb4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+        }
+
+        /* Container for all elements */
+        .container {
+            width: 60%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Styling for Student Section */
+        .students {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+        }
+
+        /* Individual student image styling */
+        .student {
+            width: 400px; /* Larger image */
+            height: 330px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect on images */
+        .student:hover {
+            transform: scale(1.1);
+        }
+
+        /* Info Section Styling */
+        .info {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            color: #ab1634; /* Soft pink color */
+        }
+
+        .details {
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 10px;
+            line-height: 1;
+            color: #1b1717;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { transform: translateX(-300px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(300px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .left {
+            animation: slideInLeft 3s ease-in-out forwards;
+        }
+
+        .right {
+            animation: slideInRight 3s ease-in-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .student {
+                width: 200px;
+                height: 300px;
+            }
+
+            .info {
+                font-size: 18px;
+            }
+
+            .details {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Students Section -->
+        <div class="students">
+            <div>
+                <img src="/uploads/horaira.jpg" alt="Student 1" class="student left">
+                <div class="details"><b>𝓜𝓭. 𝓐𝓫𝓾 𝓗𝓸𝓻𝓪𝓲𝓻𝓪 𝓣𝓸𝓷𝓶𝓸𝔂</b> <br> <b>𝓓𝓮𝓹𝓪𝓻𝓽𝓶𝓮𝓷𝓽 : 𝓒𝓢𝓔</b><br><b>𝕽𝖔𝖑𝖑 : 26</b></div>
+            </div>
+            <div style="margin-left: 50px;">
+                <img src="/uploads/avi.jpg" alt="Student 2" class="student right">
+                <div class="details"><b>𝓢𝓱𝓻𝓪𝓫𝓪𝓷 𝓚𝓪𝓻𝓶𝓸𝓴𝓮𝓻 𝓐𝓿𝓲</b><br><b>𝓓𝓮𝓹𝓪𝓻𝓽𝓶𝓮𝓷𝓽 : 𝓒𝓢𝓔</b><br><b>𝕽𝖔𝖑𝖑 : 44</b></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

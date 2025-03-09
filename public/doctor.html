@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal with Advanced Styles</title>
+    <style>
+        /* Full Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f9f9f9, #c7e6f5);
+            color: #333;
+            overflow: hidden;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Left Side Intro Text */
+        .intro {
+            width: 45%;
+            animation: fadeInLeft 1s ease;
+        }
+        .intro h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Right Side Cards */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            width: 45%;
+            animation: fadeInRight 1s ease;
+        }
+
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #30373f;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 5%;
+            width: 65%;
+        }
+
+        button:hover {
+            background-color: #224671;
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            width: 400px;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-70px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(70px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Side Content -->
+        <div class="intro">
+            <h1>Welcome to Doctor Portal</h1>
+            <p>Click on the options to proceed with your journey. You can either register as a new doctor or suggest treatment.</p>
+        </div>
+
+        <!-- Right Side Cards with Buttons -->
+        <div class="card-container">
+            <!-- Card with Button to Navigate to Registration Page -->
+            <div class="card">
+                <button onclick="window.location.href='doctor_register.html';">Register</button>
+            </div>
+        
+            <!-- Card with Button to Navigate to Treatment Page -->
+            <div class="card">
+                <button onclick="window.location.href='treatment.html';">Treatment</button>
+            </div>
+            <div class="card">
+                <button onclick="window.location.href='main.html';">Go Back</button>
+            </div>
+        </div>
+        
+
+  
+
+    <script>
+        // Function to open the modal
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>

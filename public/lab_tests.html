@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Lab Tests Management</title> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Full-Screen Gradient Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #555863, #3b3537); /* Soft purple to pink */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating Animated Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(20px);
+            animation: moveUpDown 6s infinite alternate ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 15%;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            right: 10%;
+        }
+
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 40%;
+        }
+
+        /* Glassmorphism Modal */
+        .modal-container {
+            position: fixed;
+            width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            display: none; /* Hidden by default */
+        }
+
+        /* Modal Title */
+        .modal-container h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: white; /* Dark Gray */
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder,
+        .form-group select::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+.form-group textarea:focus{
+    border-color: #fc5c7d; /* Soft pink focus */
+    background: rgba(0, 0, 0, 0.1); /* Darker background for better contrast */
+    color:white; /* Darker text for better visibility */
+}
+.form-group select:focus {
+    border-color: #fc5c7d; /* Soft pink focus */
+    background: rgba(0, 0, 0, 0.1); /* Darker background for better contrast */
+    color: #333; /* Darker text for better visibility */
+}
+
+
+        /* Submit Button */
+        .form-group button {
+            background: linear-gradient(135deg, #132b28, #fc5c7d); /* Teal to pink */
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group button:hover {
+            background: linear-gradient(135deg, #fc5c7d, #0a4f47); /* Reverse gradient */
+            transform: translateY(-2px);
+        }
+
+        /* Close Button */
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #3a3a3a; /* Dark Gray */
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Animation */
+        @keyframes moveUpDown {
+            from {
+                transform: translateY(-10px);
+            }
+            to {
+                transform: translateY(10px);
+            }
+        }
+
+        /* Table Styling */
+        .table-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container th,
+        .table-container td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .table-container th {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .table-container tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .table-container button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .table-container button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Elements -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <!-- Back Button -->
+    <a href="receiption.html" class="back-button">⬅ Go Back</a>
+
+    <!-- Lab Tests Modal Form -->
+    <div class="modal-container" id="labTestModal">
+        <button class="modal-close" onclick="closeModal()">✖</button>
+        <h3 id="modalTitle">Add New Lab Test</h3>
+        <div class="form-group">
+            <form id="labTestForm">
+                <input type="hidden" id="testId">
+                <input type="text" id="testName" placeholder="Test Name" required>
+                <textarea id="testDescription" placeholder="Test Description" rows="2"></textarea>
+                <input type="text" id="testResult" placeholder="Test Result">
+                <select id="prescriptionId">
+                    <option value="">Select Prescription</option>
+                </select>
+                <button type="submit" id="submitBtn">Add Lab Test</button>
+                <button type="button" id="cancelBtn" class="d-none">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- <div class="header">
+            <h1 class="text-primary">Lab Tests Management</h1>
+        </div> -->
+
+        <!-- Table Container -->
+        <!-- <div class="table-container">
+            <h3>All Lab Tests</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Test Name</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Result</th>
+                        <th>Prescription ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="labTestsTableBody">
+                    <tr>
+                        <td colspan="7" class="text-center">No lab tests found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // API URL - change this to match your server
+        const API_URL = 'http://localhost:3000/api';
+
+        // DOM elements
+        const labTestForm = document.getElementById('labTestForm');
+        const modalTitle = document.getElementById('modalTitle');
+        const testIdInput = document.getElementById('testId');
+        const testNameInput = document.getElementById('testName');
+        const testDescriptionInput = document.getElementById('testDescription');
+        const testResultInput = document.getElementById('testResult');
+        const prescriptionIdSelect = document.getElementById('prescriptionId');
+        const submitBtn = document.getElementById('submitBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const labTestsTableBody = document.getElementById('labTestsTableBody');
+        const labTestModal = document.getElementById('labTestModal');
+
+        // Open modal automatically when the page loads
+        window.onload = function () {
+            openModal();
+        };
+
+        // Open modal
+        function openModal() {
+            labTestModal.style.display = 'block';
+            labTestModal.style.animation = 'fadeIn 0.5s ease-in-out';
+        }
+
+        // Close modal
+        function closeModal() {
+            labTestModal.style.animation = 'fadeOut 0.4s ease-in-out';
+            setTimeout(() => {
+                labTestModal.style.display = 'none';
+            }, 400);
+            resetForm();
+        }
+
+        // Reset form
+        function resetForm() {
+            testIdInput.value = '';
+            labTestForm.reset();
+            modalTitle.textContent = 'Add New Lab Test';
+            submitBtn.textContent = 'Add Lab Test';
+            cancelBtn.classList.add('d-none');
+        }
+
+        // Load all lab tests
+        async function loadLabTests() {
+            try {
+                const response = await fetch(`${API_URL}/lab-tests`);
+                if (!response.ok) throw new Error('Failed to fetch lab tests');
+                const data = await response.json();
+
+                labTestsTableBody.innerHTML = '';
+                if (data.length === 0) {
+                    labTestsTableBody.innerHTML = `<tr><td colspan="7" class="text-center">No lab tests found</td></tr>`;
+                    return;
+                }
+
+                data.forEach(test => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${test.ID}</td>
+                        <td>${test.TEST_NAME}</td>
+                        <td>${test.TEST_DESCRIPTION || '-'}</td>
+                        <td>${new Date(test.TEST_DATE).toLocaleDateString()}</td>
+                        <td>${test.TEST_RESULT || '-'}</td>
+                        <td>${test.PRESCRIPTION_ID || '-'}</td>
+                        <td>
+                            <button onclick="editLabTest(${test.ID})">Edit</button>
+                            <button onclick="deleteLabTest(${test.ID})">Delete</button>
+                        </td>
+                    `;
+                    labTestsTableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error loading lab tests:', error);
+            }
+        }
+
+        // Load prescriptions
+        async function loadPrescriptions() {
+            try {
+                const response = await fetch(`${API_URL}/prescriptions`);
+                if (!response.ok) throw new Error('Failed to fetch prescriptions');
+                const data = await response.json();
+
+                prescriptionIdSelect.innerHTML = '<option value="">Select Prescription</option>';
+                data.forEach(prescription => {
+                    const option = document.createElement('option');
+                    option.value = prescription.id;
+                    option.textContent = `Prescription ID: ${prescription.id}`;
+                    prescriptionIdSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading prescriptions:', error);
+            }
+        }
+
+        // Submit form
+        labTestForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const labTest = {
+                test_name: testNameInput.value,
+                test_description: testDescriptionInput.value,
+                test_result: testResultInput.value,
+                prescription_id: prescriptionIdSelect.value || null
+            };
+
+            try {
+                const url = testIdInput.value ? `${API_URL}/lab-tests/${testIdInput.value}` : `${API_URL}/lab-tests`;
+                const method = testIdInput.value ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(labTest)
+                });
+
+                if (!response.ok) throw new Error('Failed to save lab test');
+                
+                // Reset the form after successful submission
+                resetForm();
+                // Reload the lab tests table
+                loadLabTests();
+            } catch (error) {
+                console.error('Error saving lab test:', error);
+            }
+        });
+
+        // Edit lab test
+        async function editLabTest(id) {
+            try {
+                const response = await fetch(`${API_URL}/lab-tests/${id}`);
+                if (!response.ok) throw new Error('Failed to fetch lab test details');
+                const test = await response.json();
+
+                testIdInput.value = test.ID;
+                testNameInput.value = test.TEST_NAME;
+                testDescriptionInput.value = test.TEST_DESCRIPTION || '';
+                testResultInput.value = test.TEST_RESULT || '';
+                prescriptionIdSelect.value = test.PRESCRIPTION_ID || '';
+
+                modalTitle.textContent = 'Edit Lab Test';
+                submitBtn.textContent = 'Update Lab Test';
+                cancelBtn.classList.remove('d-none');
+                openModal();
+            } catch (error) {
+                console.error('Error fetching lab test details:', error);
+            }
+        }
+
+        // Delete lab test
+        async function deleteLabTest(id) {
+            if (confirm('Are you sure you want to delete this lab test?')) {
+                try {
+                    const response = await fetch(`${API_URL}/lab-tests/${id}`, { method: 'DELETE' });
+                    if (!response.ok) throw new Error('Failed to delete lab test');
+                    loadLabTests();
+                } catch (error) {
+                    console.error('Error deleting lab test:', error);
+                }
+            }
+        }
+
+        // Initial load
+        loadPrescriptions();
+        loadLabTests();
+    </script>
+</body>
+</html>

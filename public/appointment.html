@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <style>
+        /* Full-Screen Gradient Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #555863, #3b3537);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating Animated Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(20px);
+            animation: moveUpDown 6s infinite alternate ease-in-out;
+        }
+
+        .circle:nth-child(1) { width: 200px; height: 200px; top: 10%; left: 15%; }
+        .circle:nth-child(2) { width: 150px; height: 150px; bottom: 20%; right: 10%; }
+        .circle:nth-child(3) { width: 100px; height: 100px; top: 70%; left: 40%; }
+
+        /* Glassmorphism Modal */
+        .modal-container {
+            position: fixed;
+            width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Modal Title */
+        .modal-container h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        /* Form Group Container */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        /* Input Field Styles */
+        .form-group input {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: #fc5c7d;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Select Field Styles */
+        .form-group select {
+            width: 94%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group select:focus {
+            border-color: #fc5c7d; /* Soft pink focus */
+    background: rgba(0, 0, 0, 0.1); /* Darker background for better contrast */
+    color: #333; /* Darker text for better visibility */
+        }
+
+        /* Submit Button Styles */
+        .form-group button {
+            background: linear-gradient(135deg, #132b28, #fc5c7d);
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 30%;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group button:hover {
+            background: linear-gradient(135deg, #fc5c7d, #0a4f47);
+            transform: translateY(-2px);
+        }
+
+        /* Close Button */
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Animation */
+        @keyframes moveUpDown {
+            from { transform: translateY(-10px); }
+            to { transform: translateY(10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Elements -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <!-- Back Button -->
+    <a href="receiption.html" class="back-button">⬅ Go Back</a>
+
+    <!-- Patients Modal Form -->
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeModal()">✖</button>
+        <h3>Book a doctor</h3>
+        <div class="form-group">
+            <form id="addAppointmentForm">
+                <input type="text" id="appointmentID" placeholder="Appointment ID" required>
+                <select id="prescription_ID" required>
+                    <option value="" disabled selected>Select Prescription</option>
+                </select>
+                <input type="number" id="priority" placeholder="Priority" required>
+                <select id="patient_ID" required>
+                    <option value="" disabled selected>Select Patient</option>
+                </select>
+                <select id="doctor_ID" required>
+                    <option value="" disabled selected>Select Doctor</option>
+                </select>
+                <input type="datetime-local" id="appointmentDate" required>
+                <button type="submit">Add Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function closeModal() {
+            document.querySelector(".modal-container").style.animation = "fadeOut 0.4s ease-in-out";
+            setTimeout(() => {
+                document.querySelector(".modal-container").style.display = "none";
+            }, 400);
+        }
+
+        function addPatient(event) {
+            event.preventDefault();
+            alert("Patient Added Successfully!");
+            closeModal();
+        }
+    </script>
+    <script src="appointment.js"></script>
+</body>
+</html>
